@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محفظة حمداد هشام للوساطة القضائية</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:#f1f4f7;
+    color:#1f2933;
+}
+
+header{
+    background:linear-gradient(135deg,#123b2a,#1e6b4b);
+    color:#fff;
+    padding:25px 20px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.scale{
+    font-size:55px;
+    margin-bottom:8px;
+}
+
+header h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+header p{
+    font-size:15px;
+    opacity:.9;
+}
+
+.container{
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 15px;
+}
+
+.profile,.section,.card{
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.profile{
+    padding:22px;
+    margin-bottom:20px;
+}
+
+.profile h2{
+    color:#145c40;
+    margin-bottom:8px;
+}
+
+.profile p{
+    line-height:1.8;
+    color:#555;
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    padding:20px;
+    border-right:5px solid #1e6b4b;
+}
+
+.card h3{
+    font-size:15px;
+    color:#666;
+    margin-bottom:10px;
+}
+
+.card strong{
+    font-size:30px;
+    color:#145c40;
+}
+
+.tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.tabs button{
+    border:0;
+    padding:12px 18px;
+    border-radius:9px;
+    background:#dfe8e3;
+    color:#174d37;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.tabs button.active,
+.tabs button:hover{
+    background:#1e6b4b;
+    color:#fff;
+}
+
+.section{
+    display:none;
+    padding:22px;
+    margin-bottom:25px;
+}
+
+.section.active{
+    display:block;
+}
+
+.section h2{
+    color:#145c40;
+    margin-bottom:20px;
+    border-bottom:2px solid #e6eee9;
+    padding-bottom:12px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+label{
+    font-weight:bold;
+    color:#374151;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #ccd5d0;
+    border-radius:8px;
+    outline:none;
+    background:#fafafa;
+}
+
+input:focus,select:focus,textarea:focus{
+    border-color:#1e6b4b;
+    background:#fff;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.btn{
+    margin-top:18px;
+    padding:11px 18px;
+    border:0;
+    border-radius:9px;
+    background:#1e6b4b;
+    color:#fff;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#145c40;
+}
+
+.btn-danger{
+    background:#a83232;
+}
+
+.btn-danger:hover{
+    background:#8b2727;
+}
+
+.btn-secondary{
+    background:#536471;
+}
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:850px;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #e5e7eb;
+    text-align:right;
+}
+
+th{
+    background:#edf5f0;
+    color:#174d37;
+}
+
+tr:hover{
+    background:#fafafa;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.status.new{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.status.progress{
+    background:#dbeafe;
+    color:#1e40af;
+}
+
+.status.solved{
+    background:#d1fae5;
+    color:#065f46;
+}
+
+.status.failed{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.empty{
+    text-align:center;
+    padding:30px;
+    color:#777;
+}
+
+.search{
+    margin-bottom:15px;
+}
+
+.search input{
+    max-width:450px;
+}
+
+.note{
+    background:#f0f7f3;
+    border-right:4px solid #1e6b4b;
+    padding:15px;
+    line-height:1.9;
+    margin-bottom:15px;
+    border-radius:8px;
+}
+
+.delete-item{
+    background:#f5f5f5;
+    padding:15px;
+    margin:10px 0;
+    border-radius:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+footer{
+    background:#123b2a;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+    line-height:1.8;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.modal-box{
+    background:#fff;
+    width:100%;
+    max-width:430px;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.25);
+}
+
+.modal-box h3{
+    color:#a83232;
+    margin-bottom:12px;
+}
+
+.modal-box p{
+    line-height:1.9;
+    color:#555;
+    margin-bottom:20px;
+}
+
+.modal-buttons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.modal-buttons button{
+    border:0;
+    padding:11px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.confirm-delete{
+    background:#b42318;
+    color:#fff;
+}
+
+.cancel-delete{
+    background:#68737b;
+    color:#fff;
+}
+
+@media(max-width:600px){
+    header h1{
+        font-size:22px;
+    }
+
+    .container{
+        padding:0 10px;
+    }
+
+    .section{
+        padding:15px;
+    }
+
+    .tabs button{
+        flex:1 1 45%;
+    }
+
+    .delete-item{
+        flex-direction:column;
+        align-items:stretch;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="scale">⚖️</div>
+    <h1>محفظة حمداد هشام للوساطة القضائية</h1>
+    <p>نظام تجريبي لتنظيم ومتابعة ملفات الوساطة القضائية</p>
+</header>
+
+<div class="container">
+
+<div class="profile">
+    <h2>المحفظة المهنية</h2>
+    <p>
+        <strong>الوسيط القضائي: حمداد هشام</strong><br>
+        مساحة رقمية تجريبية لتنظيم ملفات الوساطة القضائية،
+        القضايا، الجلسات، المواعيد والملاحظات.
+    </p>
+</div>
+
+<div class="dashboard">
+
+<div class="card">
+    <h3>إجمالي القضايا</h3>
+    <strong id="totalCases">0</strong>
+</div>
+
+<div class="card">
+    <h3>قضايا قيد الوساطة</h3>
+    <strong id="activeCases">0</strong>
+</div>
+
+<div class="card">
+    <h3>قضايا تم حلها</h3>
+    <strong id="solvedCases">0</strong>
+</div>
+
+<div class="card">
+    <h3>لم يتم التوصل إلى اتفاق</h3>
+    <strong id="failedCases">0</strong>
+</div>
+
+</div>
+
+<div class="tabs">
+
+<button class="active" onclick="showSection('dashboardSection',this)">
+الرئيسية
+</button>
+
+<button onclick="showSection('addCaseSection',this)">
+إضافة قضية
+</button>
+
+<button onclick="showSection('casesSection',this)">
+ملف القضايا
+</button>
+
+<button onclick="showSection('solvedSection',this)">
+القضايا المحلولة
+</button>
+
+<button onclick="showSection('sessionsSection',this)">
+الجلسات والمواعيد
+</button>
+
+<button onclick="showSection('notesSection',this)">
+ملاحظات الوسيط
+</button>
+
+<button onclick="showSection('deleteSection',this)">
+إدارة الحذف
+</button>
+
+</div>
+
+<section id="dashboardSection" class="section active">
+
+<h2>لوحة التحكم</h2>
+
+<div class="note">
+مرحبًا بك في محفظتك الرقمية،
+<strong>حمداد هشام</strong>.
+</div>
+
+<div class="note">
+هذا نموذج تجريبي. البيانات التي تدخلها محفوظة محليًا
+على الجهاز الذي تستخدمه.
+</div>
+
+</section>
+
+<section id="addCaseSection" class="section">
+
+<h2>إضافة ملف وساطة جديد</h2>
+
+<form id="caseForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>رقم الملف</label>
+<input type="text" id="caseNumber" required>
+</div>
+
+<div class="form-group">
+<label>رقم القضية</label>
+<input type="text" id="courtNumber">
+</div>
+
+<div class="form-group">
+<label>الجهة القضائية</label>
+<input type="text" id="court">
+</div>
+
+<div class="form-group">
+<label>نوع النزاع</label>
+<select id="caseType">
+<option>مدني</option>
+<option>تجاري</option>
+<option>عائلي</option>
+<option>عقاري</option>
+<option>نزاع حول عقد</option>
+<option>مطالبة مالية</option>
+<option>آخر</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>الطرف الأول</label>
+<input type="text" id="partyOne">
+</div>
+
+<div class="form-group">
+<label>الطرف الثاني</label>
+<input type="text" id="partyTwo">
+</div>
+
+<div class="form-group">
+<label>تاريخ الإحالة</label>
+<input type="date" id="referralDate">
+</div>
+
+<div class="form-group">
+<label>حالة الملف</label>
+<select id="caseStatus">
+<option value="new">ملف جديد</option>
+<option value="progress">قيد الوساطة</option>
+<option value="solved">تم الاتفاق</option>
+<option value="failed">لم يتم الاتفاق</option>
+</select>
+</div>
+
+<div class="form-group full">
+<label>موضوع النزاع</label>
+<textarea id="subject"></textarea>
+</div>
+
+<div class="form-group full">
+<label>ملاحظات أولية</label>
+<textarea id="initialNotes"></textarea>
+</div>
+
+</div>
+
+<button class="btn" type="submit">حفظ ملف الوساطة</button>
+
+</form>
+
+</section>
+
+<section id="casesSection" class="section">
+
+<h2>جميع ملفات الوساطة</h2>
+
+<div class="search">
+<input type="text" id="searchInput"
+placeholder="ابحث برقم الملف أو اسم أحد الأطراف..."
+oninput="renderCases()">
+</div>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+<tr>
+<th>رقم الملف</th>
+<th>القضية</th>
+<th>الجهة القضائية</th>
+<th>الطرف الأول</th>
+<th>الطرف الثاني</th>
+<th>نوع النزاع</th>
+<th>الحالة</th>
+<th>الإجراء</th>
+</tr>
+</thead>
+
+<tbody id="casesTable"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<section id="solvedSection" class="section">
+
+<h2>القضايا التي تم حلها</h2>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+<tr>
+<th>رقم الملف</th>
+<th>الطرف الأول</th>
+<th>الطرف الثاني</th>
+<th>نوع النزاع</th>
+<th>الجهة القضائية</th>
+<th>تاريخ الإحالة</th>
+</tr>
+</thead>
+
+<tbody id="solvedTable"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<section id="sessionsSection" class="section">
+
+<h2>الجلسات والمواعيد</h2>
+
+<form id="sessionForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>رقم الملف</label>
+<input type="text" id="sessionCase" required>
+</div>
+
+<div class="form-group">
+<label>تاريخ الجلسة</label>
+<input type="date" id="sessionDate" required>
+</div>
+
+<div class="form-group">
+<label>ساعة الجلسة</label>
+<input type="time" id="sessionTime">
+</div>
+
+<div class="form-group">
+<label>نوع الجلسة</label>
+<select id="sessionType">
+<option>الجلسة الأولى</option>
+<option>جلسة متابعة</option>
+<option>جلسة أخيرة</option>
+<option>جلسة توقيع الاتفاق</option>
+</select>
+</div>
+
+<div class="form-group full">
+<label>ملاحظات</label>
+<textarea id="sessionNotes"></textarea>
+</div>
+
+</div>
+
+<button class="btn" type="submit">إضافة الموعد</button>
+
+</form>
+
+<br>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+<tr>
+<th>الملف</th>
+<th>التاريخ</th>
+<th>الساعة</th>
+<th>الجلسة</th>
+<th>الملاحظات</th>
+<th>إجراء</th>
+</tr>
+</thead>
+
+<tbody id="sessionsTable"></tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<section id="notesSection" class="section">
+
+<h2>ملاحظات الوسيط</h2>
+
+<form id="noteForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>عنوان الملاحظة</label>
+<input type="text" id="noteTitle" required>
+</div>
+
+<div class="form-group">
+<label>التاريخ</label>
+<input type="date" id="noteDate" required>
+</div>
+
+<div class="form-group full">
+<label>الملاحظة</label>
+<textarea id="noteText" required></textarea>
+</div>
+
+</div>
+
+<button class="btn" type="submit">حفظ الملاحظة</button>
+
+</form>
+
+<br>
+
+<div id="notesList"></div>
+
+</section>
+
+<section id="deleteSection" class="section">
+
+<h2>🗑️ إدارة وحذف المعلومات</h2>
+
+<div class="note">
+اختر نوع البيانات ثم يمكنك حذف العنصر المطلوب.
+</div>
+
+<select id="deleteType" onchange="loadDataForDeletion()">
+
+<option value="">-- اختر نوع البيانات --</option>
+
+<option value="cases">القضايا</option>
+<option value="sessions">الجلسات</option>
+<option value="notes">الملاحظات</option>
+
+</select>
+
+<div id="deleteList"></div>
+
+</section>
+
+</div>
+
+<footer>
+⚖️ حمداد هشام<br>
+الوسيط القضائي<br>
+محفظة رقمية تجريبية لإدارة ومتابعة الوساطة القضائية
+</footer>
+
+<div id="deleteModal" class="modal">
+
+<div class="modal-box">
+
+<h3>⚠️ تأكيد الحذف</h3>
+
+<p id="deleteMessage">
+هل أنت متأكد من الحذف؟
+</p>
+
+<div class="modal-buttons">
+
+<button class="confirm-delete" onclick="confirmDelete()">
+نعم، احذف
+</button>
+
+<button class="cancel-delete" onclick="cancelDelete()">
+لا، إلغاء
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let cases = JSON.parse(localStorage.getItem("hamdad_cases") || "[]");
+let sessions = JSON.parse(localStorage.getItem("hamdad_sessions") || "[]");
+let notes = JSON.parse(localStorage.getItem("hamdad_notes") || "[]");
+
+let pendingDelete = null;
+
+
+/* التنقل */
+
+function showSection(id,button){
+
+document.querySelectorAll(".section").forEach(section=>{
+section.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll(".tabs button").forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+}
+
+
+/* حماية النص */
+
+function escapeHTML(value){
+
+return String(value || "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* إضافة قضية */
+
+document.getElementById("caseForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const newCase={
+
+id:Date.now(),
+
+caseNumber:document.getElementById("caseNumber").value.trim(),
+
+courtNumber:document.getElementById("courtNumber").value.trim(),
+
+court:document.getElementById("court").value.trim(),
+
+type:document.getElementById("caseType").value,
+
+partyOne:document.getElementById("partyOne").value.trim(),
+
+partyTwo:document.getElementById("partyTwo").value.trim(),
+
+referralDate:document.getElementById("referralDate").value,
+
+status:document.getElementById("caseStatus").value,
+
+subject:document.getElementById("subject").value.trim(),
+
+notes:document.getElementById("initialNotes").value.trim()
+
+};
+
+cases.push(newCase);
+
+saveCases();
+
+this.reset();
+
+alert("تم حفظ ملف الوساطة بنجاح.");
+
+renderAll();
+
+});
+
+
+function saveCases(){
+
+localStorage.setItem("hamdad_cases",JSON.stringify(cases));
+
+}
+
+
+/* عرض القضايا */
+
+function renderCases(){
+
+const table=document.getElementById("casesTable");
+
+const input=document.getElementById("searchInput");
+
+const search=(input.value || "").toLowerCase().trim();
+
+const filtered=cases.filter(c=>
+
+(c.caseNumber || "").toLowerCase().includes(search) ||
+
+(c.partyOne || "").toLowerCase().includes(search) ||
+
+(c.partyTwo || "").toLowerCase().includes(search)
+
+);
+
+if(filtered.length===0){
+
+table.innerHTML=
+`<tr>
+<td colspan="8" class="empty">لا توجد ملفات.</td>
+</tr>`;
+
+return;
+
+}
+
+table.innerHTML=filtered.map(c=>`
+
+<tr>
+
+<td>${escapeHTML(c.caseNumber)}</td>
+
+<td>${escapeHTML(c.courtNumber)}</td>
+
+<td>${escapeHTML(c.court)}</td>
+
+<td>${escapeHTML(c.partyOne)}</td>
+
+<td>${escapeHTML(c.partyTwo)}</td>
+
+<td>${escapeHTML(c.type)}</td>
+
+<td>${getStatus(c.status)}</td>
+
+<td>
+<button class="btn btn-danger"
+onclick="askDelete('cases',${c.id})">
+حذف
+</button>
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+/* الحالة */
+
+function getStatus(status){
+
+if(status==="new")
+return `<span class="status new">ملف جديد</span>`;
+
+if(status==="progress")
+return `<span class="status progress">قيد الوساطة</span>`;
+
+if(status==="solved")
+return `<span class="status solved">تم الاتفاق</span>`;
+
+return `<span class="status failed">لم يتم الاتفاق</span>`;
+
+}
+
+
+/* المحلولة */
+
+function renderSolved(){
+
+const table=document.getElementById("solvedTable");
+
+const solved=cases.filter(c=>c.status==="solved");
+
+if(solved.length===0){
+
+table.innerHTML=
+`<tr>
+<td colspan="6" class="empty">
+لا توجد قضايا محلولة بعد.
+</td>
+</tr>`;
+
+return;
+
+}
+
+table.innerHTML=solved.map(c=>`
+
+<tr>
+
+<td>${escapeHTML(c.caseNumber)}</td>
+<td>${escapeHTML(c.partyOne)}</td>
+<td>${escapeHTML(c.partyTwo)}</td>
+<td>${escapeHTML(c.type)}</td>
+<td>${escapeHTML(c.court)}</td>
+<td>${escapeHTML(c.referralDate)}</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+/* إضافة جلسة */
+
+document.getElementById("sessionForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+sessions.push({
+
+id:Date.now(),
+
+caseNumber:document.getElementById("sessionCase").value.trim(),
+
+date:document.getElementById("sessionDate").value,
+
+time:document.getElementById("sessionTime").value,
+
+type:document.getElementById("sessionType").value,
+
+notes:document.getElementById("sessionNotes").value.trim()
+
+});
+
+localStorage.setItem("hamdad_sessions",JSON.stringify(sessions));
+
+this.reset();
+
+renderSessions();
+
+alert("تمت إضافة الجلسة بنجاح.");
+
+});
+
+
+/* الجلسات */
+
+function renderSessions(){
+
+const table=document.getElementById("sessionsTable");
+
+if(sessions.length===0){
+
+table.innerHTML=
+`<tr>
+<td colspan="6" class="empty">
+لا توجد جلسات مسجلة.
+</td>
+</tr>`;
+
+return;
+
+}
+
+const sorted=[...sessions].sort((a,b)=>
+(a.date || "").localeCompare(b.date || "")
+);
+
+table.innerHTML=sorted.map(s=>`
+
+<tr>
+
+<td>${escapeHTML(s.caseNumber)}</td>
+<td>${escapeHTML(s.date)}</td>
+<td>${escapeHTML(s.time)}</td>
+<td>${escapeHTML(s.type)}</td>
+<td>${escapeHTML(s.notes)}</td>
+
+<td>
+<button class="btn btn-danger"
+onclick="askDelete('sessions',${s.id})">
+حذف
+</button>
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+/* الملاحظات */
+
+document.getElementById("noteForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+notes.push({
+
+id:Date.now(),
+
+title:document.getElementById("noteTitle").value.trim(),
+
+date:document.getElementById("noteDate").value,
+
+text:document.getElementById("noteText").value.trim()
+
+});
+
+localStorage.setItem("hamdad_notes",JSON.stringify(notes));
+
+this.reset();
+
+renderNotes();
+
+alert("تم حفظ الملاحظة بنجاح.");
+
+});
+
+
+function renderNotes(){
+
+const container=document.getElementById("notesList");
+
+if(notes.length===0){
+
+container.innerHTML=
+`<div class="empty">لا توجد ملاحظات.</div>`;
+
+return;
+
+}
+
+container.innerHTML=notes.map(n=>`
+
+<div class="note">
+
+<strong>${escapeHTML(n.title)}</strong>
+
+<small> — ${escapeHTML(n.date)}</small>
+
+<p style="margin-top:8px">
+${escapeHTML(n.text)}
+</p>
+
+<button class="btn btn-danger"
+onclick="askDelete('notes',${n.id})">
+حذف
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* نافذة الحذف */
+
+function askDelete(type,id){
+
+pendingDelete={type,id};
+
+let item=null;
+
+if(type==="cases"){
+item=cases.find(x=>x.id===id);
+}
+else if(type==="sessions"){
+item=sessions.find(x=>x.id===id);
+}
+else if(type==="notes"){
+item=notes.find(x=>x.id===id);
+}
+
+let title="هذا العنصر";
+
+if(type==="cases" && item){
+title="القضية رقم: " + (item.caseNumber || "غير محدد");
+}
+
+if(type==="sessions" && item){
+title="جلسة الملف: " + (item.caseNumber || "غير محدد");
+}
+
+if(type==="notes" && item){
+title="الملاحظة: " + (item.title || "غير محدد");
+}
+
+document.getElementById("deleteMessage").innerHTML=
+"هل أنت متأكد من حذف:<br><br><strong>"+
+escapeHTML(title)+
+"</strong><br><br>لا يمكن التراجع عن هذه العملية.";
+
+document.getElementById("deleteModal").style.display="flex";
+
+}
+
+
+function confirmDelete(){
+
+if(!pendingDelete)return;
+
+const {type,id}=pendingDelete;
+
+if(type==="cases"){
+
+cases=cases.filter(x=>x.id!==id);
+saveCases();
+
+}
+
+if(type==="sessions"){
+
+sessions=sessions.filter(x=>x.id!==id);
+localStorage.setItem("hamdad_sessions",JSON.stringify(sessions));
+
+}
+
+if(type==="notes"){
+
+notes=notes.filter(x=>x.id!==id);
+localStorage.setItem("hamdad_notes",JSON.stringify(notes));
+
+}
+
+pendingDelete=null;
+
+document.getElementById("deleteModal").style.display="none";
+
+renderAll();
+
+loadDataForDeletion();
+
+alert("تم الحذف بنجاح.");
+
+}
+
+
+function cancelDelete(){
+
+pendingDelete=null;
+
+document.getElementById("deleteModal").style.display="none";
+
+}
+
+
+/* إدارة الحذف */
+
+function loadDataForDeletion(){
+
+const type=document.getElementById("deleteType").value;
+
+const container=document.getElementById("deleteList");
+
+container.innerHTML="";
+
+if(!type)return;
+
+let data=[];
+
+if(type==="cases")data=cases;
+if(type==="sessions")data=sessions;
+if(type==="notes")data=notes;
+
+if(data.length===0){
+
+container.innerHTML=
+`<p class="empty">لا توجد معلومات محفوظة.</p>`;
+
+return;
+
+}
+
+data.forEach(item=>{
+
+let title="معلومة";
+
+if(type==="cases"){
+title="القضية: "+(item.caseNumber || "بدون رقم");
+}
+
+if(type==="sessions"){
+title="الجلسة: "+(item.caseNumber || "بدون رقم")+" — "+(item.date || "");
+}
+
+if(type==="notes"){
+title="الملاحظة: "+(item.title || "بدون عنوان");
+}
+
+const div=document.createElement("div");
+
+div.className="delete-item";
+
+div.innerHTML=`
+
+<strong>${escapeHTML(title)}</strong>
+
+<button class="btn btn-danger"
+onclick="askDelete('${type}',${item.id})">
+🗑️ حذف
+</button>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* الإحصائيات */
+
+function updateDashboard(){
+
+document.getElementById("totalCases").textContent=cases.length;
+
+document.getElementById("activeCases").textContent=
+cases.filter(c=>c.status==="progress").length;
+
+document.getElementById("solvedCases").textContent=
+cases.filter(c=>c.status==="solved").length;
+
+document.getElementById("failedCases").textContent=
+cases.filter(c=>c.status==="failed").length;
+
+}
+
+
+/* تحديث كل شيء */
+
+function renderAll(){
+
+renderCases();
+
+renderSolved();
+
+renderSessions();
+
+renderNotes();
+
+updateDashboard();
+
+}
+
+renderAll();
+
+</script>
+
+</body>
+</html>
